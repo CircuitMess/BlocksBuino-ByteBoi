@@ -86,7 +86,7 @@ private:
 	const short game_force_level = 0;
 	short game_level = 1; // 1,2,3,4,5,6,7,8,9 Levels
 	short game_menu_level = game_level;
-	int game_levels[GAME_LEVEL_MAX] = { 800, 750, 700, 650, 600, 500, 400, 300, 200 };
+	int game_levels[GAME_LEVEL_MAX] = { 300, 275, 250, 225, 200, 175, 150, 125, 100 };
 	int game_score = 0;
 	int game_lines = 0;
 	unsigned long game_delai = game_levels[game_level];

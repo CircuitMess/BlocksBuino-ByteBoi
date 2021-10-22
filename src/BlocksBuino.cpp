@@ -22,7 +22,7 @@ BlocksBuino::~BlocksBuino(){
 void BlocksBuino::start(){
 	Input::getInstance()->addListener(this);
 	LoopManager::addListener(this);
-	Input::getInstance()->setButtonHeldRepeatCallback(BTN_RIGHT, 300, [](uint){
+	Input::getInstance()->setButtonHeldRepeatCallback(BTN_RIGHT, 25, [](uint){
 		Serial.println("Start()");
 		if(!instance->game_menu && !instance->game_over){
 			if(!instance->CheckBlocksCollision(1, 0)){
@@ -33,7 +33,7 @@ void BlocksBuino::start(){
 		instance->draw();
 		instance->screen.commit();
 	});
-	Input::getInstance()->setButtonHeldRepeatCallback(BTN_LEFT, 300, [](uint){
+	Input::getInstance()->setButtonHeldRepeatCallback(BTN_LEFT, 25, [](uint){
 		if(!instance->game_menu && !instance->game_over){
 			if(!instance->CheckBlocksCollision(-1, 0)){
 				instance->MoveXBlocks(-1);
@@ -43,7 +43,7 @@ void BlocksBuino::start(){
 		instance->draw();
 		instance->screen.commit();
 	});
-	Input::getInstance()->setButtonHeldRepeatCallback(BTN_DOWN, 300, [](uint){
+	Input::getInstance()->setButtonHeldRepeatCallback(BTN_DOWN, 25, [](uint){
 		if(!instance->game_menu && !instance->game_over){
 			if(instance->player_blocks1[0] > 0 && !instance->CheckBlocksCollision(0, -1)){
 				instance->MoveYBlocks(-1);
