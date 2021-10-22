@@ -658,15 +658,17 @@ void BlocksBuino::DrawAnimationBlocks(){
 }
 
 void BlocksBuino::DrawNextBlocks(){
-	int x = -2;
-	int y = 10;
+	int x = -7;
+	int y = 20;
 	baseSprite->setTextColor(TFT_WHITE);
 	baseSprite->setTextSize(1);
 	baseSprite->setTextFont(1);
 	baseSprite->setCursor(3, 5);
 	baseSprite->print("SCORE");
+	baseSprite->setCursor(3, 15);
+	baseSprite->print(GetScoreString(game_score, 5));
 
-	baseSprite->setCursor(4, (LCDHEIGHT / 2) + y - 15);
+	baseSprite->setCursor(5, (LCDHEIGHT / 2) + y - 15);
 	baseSprite->print("NEXT");
 
 	switch(player_blocks_type){
