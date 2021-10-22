@@ -243,16 +243,13 @@ void BlocksBuino::GameOver(){
 }
 
 void BlocksBuino::MovePlayerBlocks(){
-Serial.println("MovePlayerBlocks()");
 	unsigned long game_currentTime = millis();
 	if(!action && (game_currentTime - game_prevTime) >= game_delai){
 		//check collision
 		if(!player_new_blocks && CheckBlocksCollision(0, -1)){
 			if(player_blocks1[0] >= (BLOCKS_MAX_Y - 1)){
 				game_over = true;//END of GAME
-				Serial.println("1");
 			}else{
-				//PlaySoundFxPieceDrop();
 
 				blocks_activation[player_blocks1[0]][player_blocks1[1]] = true;
 				blocks_activation[player_blocks2[0]][player_blocks2[1]] = true;
@@ -261,14 +258,11 @@ Serial.println("MovePlayerBlocks()");
 				player_new_blocks = true;
 
 				CheckLinesCompletion();
-				Serial.println("2");
 			}
 		}else{
-			Serial.println("3");
 			MoveYBlocks(-1);
 		}
 
-		//update prevtime
 		game_prevTime = game_currentTime;
 	}
 
