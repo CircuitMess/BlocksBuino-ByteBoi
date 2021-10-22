@@ -82,7 +82,7 @@ private:
 	bool initialize = false;
 	int game_frame_rate = 20;//default 20
 	bool game_over = false;
-	bool game_menu = false;
+	bool game_menu = true;
 	const short game_force_level = 0;
 	short game_level = 1; // 1,2,3,4,5,6,7,8,9 Levels
 	short game_menu_level = game_level;
