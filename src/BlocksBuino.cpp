@@ -215,23 +215,30 @@ void BlocksBuino::GameMenu(){
 }
 
 void BlocksBuino::GameOver(){
-	baseSprite->setTextColor(TFT_WHITE);
-	baseSprite->setTextSize(1);
+	baseSprite->setTextColor(TFT_RED);
+	baseSprite->setTextSize(2);
 	baseSprite->setTextFont(1);
-	baseSprite->setCursor(22, 1);
+	baseSprite->setCursor(22, 3);
 	baseSprite->print("!GAME OVER!");
 
-	baseSprite->setCursor(0, 10);
-	baseSprite->print("Level: [" + String(game_level) + "]");
+	baseSprite->setTextColor(TFT_BLUE);
+	baseSprite->setTextSize(1);
+	baseSprite->setTextFont(1);
 
-	baseSprite->setCursor(0, 20);
+	baseSprite->setCursor(25, 35);
+	baseSprite->print("Level: " + String(game_level));
+
+	baseSprite->setCursor(25, 50);
 	baseSprite->print("Lines: " + String(game_lines));
 
-	baseSprite->setCursor(0, 30);
+	baseSprite->setCursor(25, 65);
 	baseSprite->print("Score: " + String(game_score));
 
-	baseSprite->setCursor(0, 40);
-	baseSprite->print("\x16:accept");
+	baseSprite->setCursor(25, 80);
+	baseSprite->print("Press A to open menu!");
+
+	baseSprite->setCursor(25, 95);
+	baseSprite->print("Press B to continue!");
 
 }
 
