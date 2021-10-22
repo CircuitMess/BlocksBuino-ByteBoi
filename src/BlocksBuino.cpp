@@ -793,13 +793,6 @@ void BlocksBuino::buttonPressed(uint id){
 				}
 			}
 			break;
-		case BTN_LEFT :
-
-
-			break;
-		case BTN_RIGHT :
-
-			break;
 	}
 }
 
