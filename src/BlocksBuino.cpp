@@ -199,17 +199,17 @@ void BlocksBuino::GameMenu(){
 	baseSprite->setTextColor(TFT_WHITE);
 	baseSprite->setTextSize(1);
 	baseSprite->setTextFont(1);
-	baseSprite->setCursor(5, 1);
+	baseSprite->setCursor(15, 1);
 	baseSprite->print("-CHOOSE GAME LEVEL-");
 
-	baseSprite->fillTriangle(30, 10, 25, 15, 35, 15, TFT_GREEN);
-	baseSprite->fillTriangle(30, 28, 25, 23, 35, 23, TFT_GREEN);
+	baseSprite->fillTriangle(46, 30, 41, 35, 51, 35, TFT_GREEN);
+	baseSprite->fillTriangle(46, 58, 41, 53, 51, 53, TFT_GREEN);
 
-	baseSprite->setCursor(0, 17);
+	baseSprite->setCursor(2, 40);
 	baseSprite->print("LEVEL: " + String(game_menu_level));
 
-	baseSprite->setCursor(0, 40);
-	baseSprite->print("\x15:accept \x16:cancel");
+	baseSprite->setCursor(2, 100);
+	baseSprite->print("A:accept          B:cancel");
 
 
 }
