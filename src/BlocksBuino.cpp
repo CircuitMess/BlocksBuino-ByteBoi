@@ -244,8 +244,7 @@ void BlocksBuino::GameOver(){
 
 void BlocksBuino::MovePlayerBlocks(){
 	unsigned long game_currentTime = millis();
-	if(!action && (game_currentTime - game_prevTime) >= game_delai){
-		//check collision
+	if((game_currentTime - game_prevTime) >= game_delai){
 		if(!player_new_blocks && CheckBlocksCollision(0, -1)){
 			if(player_blocks1[0] >= (BLOCKS_MAX_Y - 1)){
 				game_over = true;//END of GAME
