@@ -33,8 +33,7 @@ BlocksBuino::BlocksBuino(Display* display) : Context(*display), baseSprite(scree
 BlocksBuino::~BlocksBuino(){
 	rotation = nullptr;
 	delete rotation;
-	menuBuffer = nullptr;
-	delete menuBuffer;
+	free(menuBuffer);
 }
 void BlocksBuino::start(){
 	Input::getInstance()->addListener(this);
