@@ -9,6 +9,7 @@
 #include <Support/Context.h>
 #include "Rotation.h"
 #include <Input/Input.h>
+#include <ByteBoi.h>
 
 #define GAME_LEVEL_MAX 9
 #define BLOCKS_MAX_Y 20
@@ -119,6 +120,8 @@ private:
 	Sprite *baseSprite;
 	static BlocksBuino* instance;
 	Color* menuBuffer = nullptr;
+
+	Sample* music = nullptr;
 
 	void buttonPressed(uint id) override;
 };
