@@ -101,6 +101,8 @@ void BlocksBuino::stop(){
 	Input::getInstance()->removeBtnReleaseCallback(BTN_DOWN);
 
 	Input::getInstance()->removeListener(this);
+
+	LoopManager::removeListener(this);
 }
 
 void BlocksBuino::draw(){
