@@ -5,6 +5,7 @@
 #include <Loop/LoopManager.h>
 #include <ByteBoi.h>
 #include <Audio/Piezo.h>
+#include <SD.h>
 #include "src/BlocksBuino.h"
 
 BlocksBuino* blocksBuino;
@@ -15,6 +16,7 @@ void setup(){
 	ByteBoi.bindMenu();
 	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("Block");
+	SD.begin(SD_CS, SPI);
 	blocksBuino=new BlocksBuino(ByteBoi.getDisplay());
 	blocksBuino->unpack();
 	ByteBoi.splash();

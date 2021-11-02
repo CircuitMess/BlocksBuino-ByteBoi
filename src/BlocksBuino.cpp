@@ -8,6 +8,7 @@
 #include <FS.h>
 #include <ByteBoi.h>
 #include <FS/CompressedFile.h>
+#include <SD.h>
 
 
 //creates a Gamebuino object named gb
@@ -28,9 +29,14 @@ BlocksBuino::BlocksBuino(Display* display) : Context(*display), baseSprite(scree
 	backgroundFile.read(reinterpret_cast<uint8_t*>(menuBuffer), 160 * 120 * 2);
 	backgroundFile.close();
 
+	music = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/Twister.aac"));
+	music->setLooping(true);
 }
 
 BlocksBuino::~BlocksBuino(){
+	BlocksBuino::stop();
+	delete music;
+
 	rotation = nullptr;
 	delete rotation;
 	menuBuffer = nullptr;
@@ -81,10 +87,12 @@ void BlocksBuino::start(){
 	});
 	draw();
 	instance->screen.commit();
+	Playback.play(music);
 
 }
 
 void BlocksBuino::stop(){
+	Playback.stop();
 	Input::getInstance()->removeBtnPressCallback(BTN_RIGHT);
 	Input::getInstance()->removeBtnReleaseCallback(BTN_RIGHT);
 	Input::getInstance()->removeBtnPressCallback(BTN_LEFT);
