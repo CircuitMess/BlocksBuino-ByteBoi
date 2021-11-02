@@ -114,8 +114,6 @@ void BlocksBuino::draw(){
 	}else{
 		PlayDraw();
 	}
-	screen.commit();
-
 }
 void BlocksBuino::loop(uint micros){
 
