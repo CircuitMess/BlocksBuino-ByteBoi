@@ -5,6 +5,10 @@
 //importe the Gamebuino library
 //#include <Gamebuino.h>
 #include <Pins.hpp>
+#include <FS.h>
+#include <ByteBoi.h>
+#include <FS/CompressedFile.h>
+
 
 //creates a Gamebuino object named gb
 //Gamebuino gb = Gamebuino();
@@ -13,11 +17,24 @@ BlocksBuino* BlocksBuino::instance = nullptr;
 BlocksBuino::BlocksBuino(Display* display) : Context(*display), baseSprite(screen.getSprite()){
 	instance = this;
 	rotation = new Rotation(this);
+	menuBuffer = static_cast<Color*>(ps_malloc(160 * 120 * 2));
+	if(menuBuffer == nullptr){
+		Serial.printf("BlocksMenuBg unpack error\n");
+		return;
+	}
+
+	fs::File backgroundFile = CompressedFile::open(ByteBoi.openResource("/BlocksMenuBg.raw.hs"), 14, 13);
+
+	backgroundFile.read(reinterpret_cast<uint8_t*>(menuBuffer), 160 * 120 * 2);
+	backgroundFile.close();
+
 }
 
 BlocksBuino::~BlocksBuino(){
 	rotation = nullptr;
 	delete rotation;
+	menuBuffer = nullptr;
+	delete menuBuffer;
 }
 void BlocksBuino::start(){
 	Input::getInstance()->addListener(this);
@@ -196,20 +213,21 @@ void BlocksBuino::PlayLogic(){
 }
 
 void BlocksBuino::GameMenu(){
+	baseSprite->drawIcon(menuBuffer,0,0,160,120);
 	baseSprite->setTextColor(TFT_WHITE);
 	baseSprite->setTextSize(1);
 	baseSprite->setTextFont(1);
-	baseSprite->setCursor(15, 1);
+	baseSprite->setCursor(25, 1);
 	baseSprite->print("-CHOOSE GAME LEVEL-");
 
-	baseSprite->fillTriangle(46, 30, 41, 35, 51, 35, TFT_GREEN);
-	baseSprite->fillTriangle(46, 58, 41, 53, 51, 53, TFT_GREEN);
+	baseSprite->fillTriangle(84, 49, 79, 54, 89, 54, TFT_GREEN);
+	baseSprite->fillTriangle(84, 77, 79, 72, 89, 72, TFT_GREEN);
 
-	baseSprite->setCursor(2, 40);
+	baseSprite->setCursor(40, 59);
 	baseSprite->print("LEVEL: " + String(game_menu_level));
 
 	baseSprite->setCursor(2, 100);
-	baseSprite->print("A:accept          B:cancel");
+	baseSprite->print("A:accept            B:exit");
 
 
 }
@@ -765,8 +783,7 @@ void BlocksBuino::buttonPressed(uint id){
 			break;
 		case BTN_B :
 			if(game_menu){
-				game_menu_level = game_level;
-				game_menu = false;
+				ByteBoi.backToLauncher();
 			}else if(game_over){
 				initialize = false;
 				game_over = false;

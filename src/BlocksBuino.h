@@ -118,6 +118,7 @@ private:
 
 	Sprite *baseSprite;
 	static BlocksBuino* instance;
+	Color* menuBuffer = nullptr;
 
 	void buttonPressed(uint id) override;
 };
