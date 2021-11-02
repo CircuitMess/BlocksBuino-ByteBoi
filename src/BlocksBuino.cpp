@@ -89,6 +89,9 @@ void BlocksBuino::start(){
 	instance->screen.commit();
 	Playback.play(music);
 
+	if(!game_menu && !game_over){
+		game_animation_delai_prevTime = millis();
+	}
 }
 
 void BlocksBuino::stop(){
