@@ -25,11 +25,15 @@ BlocksBuino::BlocksBuino(Display* display) : Context(*display), baseSprite(scree
 
 	music = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/Twister.aac"));
 	music->setLooping(true);
+
+	gameOverMusic = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/GameOver.aac"));
+	gameOverMusic->setLooping(true);
 }
 
 BlocksBuino::~BlocksBuino(){
 	BlocksBuino::stop();
 	delete music;
+	delete gameOverMusic;
 
 	delete rotation;
 	free(menuBuffer);
@@ -267,6 +271,8 @@ void BlocksBuino::MovePlayerBlocks(){
 		if(!player_new_blocks && CheckBlocksCollision(0, -1)){
 			if(player_blocks1[0] >= (BLOCKS_MAX_Y - 1)){
 				game_over = true;//END of GAME
+				Playback.stop();
+				Playback.play(gameOverMusic);
 			}else{
 
 				blocks_activation[player_blocks1[0]][player_blocks1[1]] = true;
@@ -778,6 +784,8 @@ void BlocksBuino::buttonPressed(uint id){
 				initialize = false;
 				game_over = false;
 				game_menu = true;
+				Playback.stop();
+				Playback.play(music);
 			}
 			break;
 		case BTN_B :
@@ -786,6 +794,8 @@ void BlocksBuino::buttonPressed(uint id){
 			}else if(game_over){
 				initialize = false;
 				game_over = false;
+				Playback.stop();
+				Playback.play(music);
 			}else if(!game_menu && !game_over){
 				game_over = false;
 				game_menu = true;
