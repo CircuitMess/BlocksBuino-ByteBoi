@@ -217,8 +217,6 @@ void BlocksBuino::GameMenu(){
 	baseSprite->setTextColor(TFT_WHITE);
 	baseSprite->setTextSize(1);
 	baseSprite->setTextFont(1);
-	baseSprite->setCursor(25, 1);
-	baseSprite->print("-CHOOSE GAME LEVEL-");
 
 	baseSprite->fillTriangle(84, 49, 79, 54, 89, 54, TFT_GREEN);
 	baseSprite->fillTriangle(84, 77, 79, 72, 89, 72, TFT_GREEN);
@@ -226,8 +224,11 @@ void BlocksBuino::GameMenu(){
 	baseSprite->setCursor(40, 59);
 	baseSprite->print("LEVEL: " + String(game_menu_level));
 
-	baseSprite->setCursor(2, 100);
-	baseSprite->print("A:accept            B:exit");
+	baseSprite->setTextFont(2);
+	baseSprite->setCursor(60, 85);
+	baseSprite->print("A: play");
+	baseSprite->setCursor(60, 100);
+	baseSprite->print("B: exit");
 
 
 }
@@ -239,7 +240,7 @@ void BlocksBuino::GameOver(){
 	baseSprite->setCursor(22, 3);
 	baseSprite->print("!GAME OVER!");
 
-	baseSprite->setTextColor(TFT_BLUE);
+	baseSprite->setTextColor(TFT_WHITE);
 	baseSprite->setTextSize(1);
 	baseSprite->setTextFont(1);
 
