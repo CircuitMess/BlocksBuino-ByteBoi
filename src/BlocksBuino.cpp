@@ -31,7 +31,6 @@ BlocksBuino::~BlocksBuino(){
 	BlocksBuino::stop();
 	delete music;
 
-	rotation = nullptr;
 	delete rotation;
 	free(menuBuffer);
 }
