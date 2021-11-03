@@ -1,9 +1,5 @@
-
 #include "BlocksBuino.h"
-//imports the SPI library (needed to communicate with Gamebuino's screen)
 #include <SPI.h>
-//importe the Gamebuino library
-//#include <Gamebuino.h>
 #include <Pins.hpp>
 #include <FS.h>
 #include <ByteBoi.h>
@@ -11,8 +7,6 @@
 #include <SD.h>
 
 
-//creates a Gamebuino object named gb
-//Gamebuino gb = Gamebuino();
 BlocksBuino* BlocksBuino::instance = nullptr;
 
 BlocksBuino::BlocksBuino(Display* display) : Context(*display), baseSprite(screen.getSprite()){
@@ -124,14 +118,12 @@ void BlocksBuino::loop(uint micros){
 	}
 	if(!game_menu && !game_over){
 		PlayLogic();
-		//Serial.println("loop()");
 	}
 	draw();
 	screen.commit();
 }
 
 void BlocksBuino::InitGame(){
-	//gb.setFrameRate(game_frame_rate);
 
 	player_new_blocks = true;
 
@@ -213,7 +205,6 @@ void BlocksBuino::PlayLogic(){
 		}
 	}else{
 		//GAME
-		Serial.println("MovePlayerBlocks()PlayLogic");
 		MovePlayerBlocks();
 		//update animation prevtime
 		game_animation_delai_prevTime = millis();
@@ -636,7 +627,6 @@ void BlocksBuino::DrawBlocks(){
 		while(j < BLOCKS_MAX_X){
 			x = GetXcoordonnee(j);
 			if(blocks_activation[i][j]){
-				//gb.display.drawRect(x, y, block_draw_w, block_draw_h);
 				baseSprite->fillRect(x, y, block_draw_w, block_draw_h,TFT_BLUE);
 			}
 			j++;
@@ -762,8 +752,7 @@ void BlocksBuino::DrawNextBlocks(){
 void BlocksBuino::DrawField(){
 	baseSprite->drawRect(field_x, field_y, field_w, field_h, TFT_BLUE);
 	baseSprite->drawRect(field_x - 2, field_y, field_w + 4, field_h, TFT_BLUE);
-	//gb.display.drawLine(field_x, 0,field_x, LCDHEIGHT);
-	//gb.display.drawLine(field_x2, 0, field_x2, LCDHEIGHT);
+
 }
 
 void BlocksBuino::ShowDebug(String message){
