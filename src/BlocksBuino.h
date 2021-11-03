@@ -120,7 +120,8 @@ private:
 	Sprite *baseSprite;
 	static BlocksBuino* instance;
 	Color* menuBuffer = nullptr;
-
+	Color colors[6] = {TFT_RED, TFT_GREEN, TFT_YELLOW, TFT_CYAN, TFT_GOLD, TFT_PURPLE};
+	Color blockColor;
 	Sample* music = nullptr;
 
 	void buttonPressed(uint id) override;

@@ -332,7 +332,7 @@ void BlocksBuino::RotateBlocks(){
 
 void BlocksBuino::NewPlayerBlocks(){
 	player_blocks_rotation = 1;//reset to initial value
-
+	blockColor = colors[random(0, 6)];
 	switch(player_blocks_type){
 		case BLOCKS_LINE:
 			//line
@@ -560,16 +560,16 @@ int BlocksBuino::GetYcoordonnee(int y){
 
 void BlocksBuino::DrawPlayerBlocks(){
 	if(player_blocks1[0] < BLOCKS_MAX_Y){
-		baseSprite->drawRect(GetXcoordonnee(player_blocks1[1]), GetYcoordonnee(player_blocks1[0]), block_draw_w, block_draw_h, TFT_RED);
+		baseSprite->drawRect(GetXcoordonnee(player_blocks1[1]), GetYcoordonnee(player_blocks1[0]), block_draw_w, block_draw_h, blockColor);
 	}
 	if(player_blocks2[0] < BLOCKS_MAX_Y){
-		baseSprite->drawRect(GetXcoordonnee(player_blocks2[1]), GetYcoordonnee(player_blocks2[0]), block_draw_w, block_draw_h, TFT_RED);
+		baseSprite->drawRect(GetXcoordonnee(player_blocks2[1]), GetYcoordonnee(player_blocks2[0]), block_draw_w, block_draw_h, blockColor);
 	}
 	if(player_blocks3[0] < BLOCKS_MAX_Y){
-		baseSprite->drawRect(GetXcoordonnee(player_blocks3[1]), GetYcoordonnee(player_blocks3[0]), block_draw_w, block_draw_h, TFT_RED);
+		baseSprite->drawRect(GetXcoordonnee(player_blocks3[1]), GetYcoordonnee(player_blocks3[0]), block_draw_w, block_draw_h, blockColor);
 	}
 	if(player_blocks4[0] < BLOCKS_MAX_Y){
-		baseSprite->drawRect(GetXcoordonnee(player_blocks4[1]), GetYcoordonnee(player_blocks4[0]), block_draw_w, block_draw_h, TFT_RED);
+		baseSprite->drawRect(GetXcoordonnee(player_blocks4[1]), GetYcoordonnee(player_blocks4[0]), block_draw_w, block_draw_h, blockColor);
 	}
 }
 
