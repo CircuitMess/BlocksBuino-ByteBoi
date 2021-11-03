@@ -797,6 +797,9 @@ void BlocksBuino::buttonPressed(uint id){
 			}else if(game_over){
 				initialize = false;
 				game_over = false;
+			}else if(!game_menu && !game_over){
+				game_over = false;
+				game_menu = true;
 			}
 			break;
 		case BTN_C :
