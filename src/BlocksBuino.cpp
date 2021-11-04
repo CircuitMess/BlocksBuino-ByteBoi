@@ -27,7 +27,7 @@ BlocksBuino::BlocksBuino(Display* display) : Context(*display), baseSprite(scree
 	music->setLooping(true);
 
 	gameOverMusic = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/GameOver.aac"));
-	gameOverMusic->setLooping(true);
+	gameOverMusic->setLooping(false);
 }
 
 BlocksBuino::~BlocksBuino(){
