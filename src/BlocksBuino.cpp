@@ -241,7 +241,7 @@ void BlocksBuino::GameOver(){
 	baseSprite->setTextColor(TFT_RED);
 	baseSprite->setTextSize(2);
 	baseSprite->setTextFont(1);
-	baseSprite->setCursor(22, 3);
+	baseSprite->setCursor(15, 3);
 	baseSprite->print("!GAME OVER!");
 
 	baseSprite->setTextColor(TFT_WHITE);
