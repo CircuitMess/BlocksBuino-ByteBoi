@@ -7,12 +7,14 @@
 #include <Audio/Piezo.h>
 #include <SD.h>
 #include "src/BlocksBuino.h"
+#include <SleepService.h>
 
 BlocksBuino* blocksBuino;
 
 void setup(){
 	Serial.begin(115200);
 	ByteBoi.begin();
+	Sleep.begin();
 	ByteBoi.bindMenu();
 	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("Block");
