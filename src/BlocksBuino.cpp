@@ -790,6 +790,7 @@ void BlocksBuino::buttonPressed(uint id){
 			break;
 		case BTN_B :
 			if(game_menu){
+				Playback.stop();
 				ByteBoi.backToLauncher();
 			}else if(game_over){
 				initialize = false;
