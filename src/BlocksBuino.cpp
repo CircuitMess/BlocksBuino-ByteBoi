@@ -4,7 +4,6 @@
 #include <FS.h>
 #include <ByteBoi.h>
 #include <FS/CompressedFile.h>
-#include <SD.h>
 
 
 BlocksBuino* BlocksBuino::instance = nullptr;
@@ -23,10 +22,10 @@ BlocksBuino::BlocksBuino(Display* display) : Context(*display), baseSprite(scree
 	backgroundFile.read(reinterpret_cast<uint8_t*>(menuBuffer), 160 * 120 * 2);
 	backgroundFile.close();
 
-	music = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/Twister.aac"));
+	music = new Sample(ByteBoi.SD_open(ByteBoi.getSDPath() + "/Music/Twister.aac"));
 	music->setLooping(true);
 
-	gameOverMusic = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/GameOver.aac"));
+	gameOverMusic = new Sample(ByteBoi.SD_open(ByteBoi.getSDPath() + "/Music/GameOver.aac"));
 	gameOverMusic->setLooping(false);
 }
 
